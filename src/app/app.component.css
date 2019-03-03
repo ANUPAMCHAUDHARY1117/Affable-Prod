@@ -1,0 +1,16 @@
+.navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    height: 70px;
+    width: 100%; /* Full width */
+    z-index: 999;
+  }
+
+.navbar p{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+}
+  

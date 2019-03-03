@@ -2,7 +2,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const fs = require('fs')
+const MongoClient = require('mongodb').MongoClient;
 const app = express();
+var url = "mongodb://localhost:27017/";
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
@@ -14,8 +16,33 @@ app.use(function(req, res, next) {
     next();
   });
 
+var data ;
+var mongoData = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 
-var data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myobj = mongoData;
+    dbo.listCollections().toArray(function(err, result){
+        console.log("RESUlt>>>>>>>>>>>>",result)
+        if(result.length > 0){
+            dbo.collection("users").drop(function(err, delOK) {
+                if (err) throw err;
+                if (delOK) console.log("Collection deleted");
+              });
+        }
+    });
+    dbo.collection("users").insertMany(myobj, function(err, res, callback) {
+      if (err) throw err;
+      console.log("Number of documents inserted: " + res.insertedCount);
+      dbo.collection("users").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        data = result;
+        console.log(result);
+        db.close();
+      });
+    });
+});
 
 app.listen('8080', function(err){
     if(err){
@@ -26,7 +53,7 @@ app.listen('8080', function(err){
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
+     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 app.get('/bio', function (req, res){

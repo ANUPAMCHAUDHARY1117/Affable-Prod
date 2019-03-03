@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   itmesSelected = [];
+  lastWidth;
 
   constructor(private _sortService : SortService){
 
@@ -37,6 +38,13 @@ export class HomeComponent implements OnInit {
 
     
   }
+  onResize(event) {
+    console.log("WINDOW RESIZING",event.target.innerWidth);
+    if(event.target.innerWidth <= 768){
+      console.log("WINDOW RESIZING WVWNT");
+      $('.ngx-pagination').css('margin-left','5%');
+    }
+  }
 
   onKeyUp(){
     console.log(this.searchText);
@@ -45,11 +53,15 @@ export class HomeComponent implements OnInit {
   ngAfterViewChecked(){
     $('.multiselect-item-checkbox').children().eq(1).css('display','none');
     $('.ngx-pagination').css('margin-left','27%');
+    $('.dropdown-multi[_ngcontent-c1]').css('padding','0px');
+    $('.dropdown-btn[_ngcontent-c2]').css('padding','12px');
   }
 
   hidingSelctAll(){
     $('.multiselect-item-checkbox').children().eq(1).css('display','none');
   }
+
+  
 
   
 

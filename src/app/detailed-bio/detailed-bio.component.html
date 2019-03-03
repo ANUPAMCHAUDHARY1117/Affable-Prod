@@ -1,38 +1,22 @@
-<div class="container portfolio">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="heading">	
-        <a routerLink="/">Go Back</a>
-      </div>
-    </div>	
-	</div>
-	<div class="bio-info">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="bio-image">
-							<img [src]="arrayData[0].picture" alt="image" />
-						</div>			
-					</div>
-				</div>	
+  <div *ngIf="arrayData" class="wrapper">
+		<div class="header">
+			<a [routerLink]="['/']">Back To Dashboard</a>
+		</div>
+    <div class="product-img">
+      <img [src]="arrayData[0].picture" alt="image"/>
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1>{{arrayData[0].fullName}}</h1>
+				<h2>{{arrayData[0].username}}</h2>
+				<p>{{arrayData[0].biography}}</p>
+				<h2 class="count">Followers Count | {{arrayData[0].followerCount}}</h2>
 			</div>
-			<div class="col-md-6">
-				<div class="bio-content">
-          <h1>{{arrayData[0].fullName}}</h1>
-          <h5>{{arrayData[0].username}}</h5>
-          <p>{{arrayData[0].biography}}</p>
-          <ul class="list-group list-group-horizontal">
-              <li class="list-group-item">Followers Count</li>
-            <li class="list-group-item">{{arrayData[0].followerCount}}</li>
-          </ul>
-          <br>
-          <ul class="list-group">
-            <li class="list-group-item active">Interests</li>
-            <li class="list-group-item" *ngFor="let data of arrayData[0].stats.interests">{{data}}</li>
-          </ul>
-				</div>
-			</div>
-		</div>	
+				<ul>
+					<li  class="active"><a href="#">Interests</a></li>
+					<li *ngFor="let data of arrayData[0].stats.interests"><a href="#">{{data}}</a></li>
+				</ul>
+    </div>
 	</div>
-</div>
+	
+	

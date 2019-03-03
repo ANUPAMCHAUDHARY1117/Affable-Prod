@@ -1,15 +1,195 @@
-.card{
-    margin: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+* {
+    box-sizing: border-box;
+    
+  }
+.main{
+  padding-top: 30px;
 }
-.card-img-top{
-    padding : 10px;
-}
-.card-body{
-    height: 300px;
-}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 5px;
+  }
+
+  
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+.dropbtn {
+    width: 100%;
+    background-color: #2980b9;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-multi {
+    padding: 16px;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #2980b9}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #2980b9;
+  }
+
+  input[type=text], select {
+    width: 100%;
+    padding: 16px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
 
 .ngx-pagination{
     margin-left: 25%;
 }
+
+.menu {
+    font-family: 'Roboto', sans-serif; 
+    height: 600px;
+    width: 25%;
+    float: left;
+    padding: 15px;
+  }
+
+.card-column{
+    float: left;
+    width: 33.33%;
+  }
+
+.card {
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: 100%;
+    margin: auto;
+    text-align: center;
+  }
+
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  .biography{
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .bottom{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
+
+ 
+  .cardButton {
+    border: none;
+    margin-bottom: 0%;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #2980b9;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a[id="link"] {
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  @media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+        padding: 5px;
+      }
+
+      .menu {
+          width: 50%;
+          height: 650px;
+          padding: 5px;
+      }
+
+    .ngx-pagination{
+        margin-left: 10%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+        padding: 5px;
+      }
+
+      .menu {
+          width: 90%;
+          height: 700px;
+          padding: 10%;
+      }
+  }
